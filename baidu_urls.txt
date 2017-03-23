@@ -1,1 +1,5 @@
 http://www.beautyface.tech/2017/03/21/phpstorm格式化/
+http://www.beautyface.tech/2017/03/20/linux-group/
+http://www.beautyface.tech/2017/03/20/nginxConf详解/
+http://www.beautyface.tech/2017/03/20/从运行原理及使用场景看Apache和Nginx/
+http://www.beautyface.tech/2017/03/17/写博客之前/
