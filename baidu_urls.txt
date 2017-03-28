@@ -1,5 +1,1 @@
-http://www.beautyface.tech/2017/03/23/Logstash-Kibana-Elasticsearch构建日志系统/
-http://www.beautyface.tech/2017/03/21/phpstorm格式化/
-http://www.beautyface.tech/2017/03/20/linux-group/
-http://www.beautyface.tech/2017/03/20/nginxConf详解/
-http://www.beautyface.tech/2017/03/20/从运行原理及使用场景看Apache和Nginx/
+http://www.beautyface.tech/2017/03/27/filebeat-config解析/
