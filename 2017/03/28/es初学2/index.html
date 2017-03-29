@@ -95,7 +95,7 @@ Loading the Sample Dataset 加载样本数据集# 使用示例上的https://raw.
 <meta property="og:site_name" content="freehere的博客">
 <meta property="og:description" content="ElasticsearchElasticsearch是一个基于Apache Lucene(TM)的开源搜索引擎。无论在开源还是专有领域，Lucene可以被认为是迄今为止最先进、性能最好的、功能最全的搜索引擎库。
 Loading the Sample Dataset 加载样本数据集# 使用示例上的https://raw.githubusercontent.com/elastic/elasticsea">
-<meta property="og:updated_time" content="2017-03-28T10:01:03.296Z">
+<meta property="og:updated_time" content="2017-03-29T07:52:50.694Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es初学2">
 <meta name="twitter:description" content="ElasticsearchElasticsearch是一个基于Apache Lucene(TM)的开源搜索引擎。无论在开源还是专有领域，Lucene可以被认为是迄今为止最先进、性能最好的、功能最全的搜索引擎库。
@@ -339,6 +339,221 @@ yellow open   bank     X5dbpKDcS8i1KrV22Basug   5   1       1000            0   
 </code></pre><h3 id="The-Search-API-查询api"><a href="#The-Search-API-查询api" class="headerlink" title="The Search API 查询api"></a>The Search API 查询api</h3><pre><code># 这里使用Restful Api进行查询
 # 用于搜索的REST API可以以_search作为关键字进行查询，示例返回银行索引中的所有文档
 curl -XGET &apos;localhost:9200/bank/_search?q=*&amp;sort=account_number:asc&amp;pretty&amp;pretty&apos;
+# 重要的是要明白，获得了搜索结果，Elasticsearch就完成了这次请求，并且不会保留任何类型的服务器端资源
+# 这与许多其他平台（如SQL）形成不同，您可能最初会先查询到查询结果的部分子集，然后要获取（或浏览）其余部分
+</code></pre><h3 id="Introducing-the-Query-Language"><a href="#Introducing-the-Query-Language" class="headerlink" title="Introducing the Query Language"></a>Introducing the Query Language</h3><pre><code># Elasticsearch提供了一种可用于执行查询的JSON风格的语言,称为查询DSL。
+curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+{
+  &quot;query&quot;: { &quot;match_all&quot;: {} }
+}
+&apos;
+#  match_all查询只是搜索指定索引中的所有文档
+curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+{
+  &quot;query&quot;: { &quot;match_all&quot;: {} },
+  &quot;size&quot;: 1
+}
+&apos;
+# size配置查询的记录数量，如果不配置，默认为10
+curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+{
+  &quot;query&quot;: { &quot;match_all&quot;: {} },
+  &quot;from&quot;: 10,
+  &quot;size&quot;: 10
+}
+&apos;
+# from配置了查询的偏移量，这将查询序列为11-20的数据，默认为0
+curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+{
+  &quot;query&quot;: { &quot;match_all&quot;: {} },
+  &quot;sort&quot;: { &quot;balance&quot;: { &quot;order&quot;: &quot;desc&quot; } }
+}
+&apos;
+# sort配置了查询的顺序，类似SQL,以balance字段倒叙排列。
+</code></pre><h3 id="Executing-Searches-执行搜索"><a href="#Executing-Searches-执行搜索" class="headerlink" title="Executing Searches 执行搜索"></a>Executing Searches 执行搜索</h3><pre><code># 如果只想让个别字段返回，而不是所有字段，如示例:
+curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+{
+  &quot;query&quot;: { &quot;match_all&quot;: {} },
+  &quot;_source&quot;: [&quot;account_number&quot;, &quot;balance&quot;]
+}
+&apos;
+# 则只会返回类似这样的结果,查询语句类似SQL的select from 
+{
+        &quot;_index&quot; : &quot;bank&quot;,
+        &quot;_type&quot; : &quot;account&quot;,
+        &quot;_id&quot; : &quot;222&quot;,
+        &quot;_score&quot; : 1.0,
+        &quot;_source&quot; : {
+          &quot;account_number&quot; : 222,
+          &quot;balance&quot; : 14764
+        }
+ }
+ #下面基本的字段搜索查询（即针对特定字段或一组字段进行搜索),下面查询了account_number为20的记录
+ curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+ {
+   &quot;query&quot;: { &quot;match&quot;: { &quot;account_number&quot;: 20 } }
+ }
+ &apos;
+ # 下面查询了address为包含了mill或lane的记录
+ curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+ {
+   &quot;query&quot;: { &quot;match&quot;: { &quot;address&quot;: &quot;mill lane&quot; } }
+ }
+ &apos;
+ # bool查询允许使用布尔逻辑将更小的查询组合成较大的查询。
+ curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+ {
+   &quot;query&quot;: {
+     &quot;bool&quot;: {
+       &quot;must&quot;: [
+         { &quot;match&quot;: { &quot;address&quot;: &quot;mill&quot; } },
+         { &quot;match&quot;: { &quot;address&quot;: &quot;lane&quot; } }
+       ]
+     }
+   }
+ }
+ &apos;
+ # 在上面的例子中，bool must子句指定文档被认为是一个匹配的所有查询必须是真的,类似SQL where and.即address需包含mill和lane
+ curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+ {
+   &quot;query&quot;: {
+     &quot;bool&quot;: {
+       &quot;should&quot;: [
+         { &quot;match&quot;: { &quot;address&quot;: &quot;mill&quot; } },
+         { &quot;match&quot;: { &quot;address&quot;: &quot;lane&quot; } }
+       ]
+     }
+   }
+ }
+ &apos;
+ # bool should子句指定一个查询列表，对于一个被认为是一个匹配的文档，它们必须是true。类似SQL where or.即address需包含mill或lane
+ curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+ {
+   &quot;query&quot;: {
+     &quot;bool&quot;: {
+       &quot;must_not&quot;: [
+         { &quot;match&quot;: { &quot;address&quot;: &quot;mill&quot; } },
+         { &quot;match&quot;: { &quot;address&quot;: &quot;lane&quot; } }
+       ]
+     }
+   }
+ }
+ &apos;
+ # must_not 即must 的反义，即SQL where not ，即address不包括mill和lane的任意
+ # 可以在bool查询中同时结合使用must，should和must_not子句
+ curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+ {
+   &quot;query&quot;: {
+     &quot;bool&quot;: {
+       &quot;must&quot;: [
+         { &quot;match&quot;: { &quot;age&quot;: &quot;40&quot; } }
+       ],
+       &quot;must_not&quot;: [
+         { &quot;match&quot;: { &quot;state&quot;: &quot;ID&quot; } }
+       ]
+     }
+   }
+ }
+ &apos;
+ # Executing Filters 过滤器
+
+ curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+ {
+   &quot;query&quot;: {
+     &quot;bool&quot;: {
+       &quot;must&quot;: { &quot;match_all&quot;: {} },
+       &quot;filter&quot;: {
+         &quot;range&quot;: {
+           &quot;balance&quot;: {
+             &quot;gte&quot;: 20000,
+             &quot;lte&quot;: 30000
+           }
+         }
+       }
+     }
+   }
+ }
+ &apos;
+# 上面示例,余额大于或等于20000且小于或等于30000的账户,即20000&lt;=balance&lt;=30000。
+</code></pre><h3 id="聚合查询"><a href="#聚合查询" class="headerlink" title="聚合查询"></a>聚合查询</h3><pre><code># 聚合的最简单的方法是将其大致等同于SQL GROUP BY和SQL聚合函数
+curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+{
+  &quot;size&quot;: 0,
+  &quot;aggs&quot;: {
+    &quot;group_by_state&quot;: {
+      &quot;terms&quot;: {
+        &quot;field&quot;: &quot;state.keyword&quot;
+      }
+    }
+  }
+}
+&apos;
+# 上面会返回类似SQL：SELECT state, COUNT(*) FROM bank GROUP BY state ORDER BY COUNT(*) DESC
+# 即按计数降序排序只返回state字段的前10个数据
+curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+{
+  &quot;size&quot;: 0,
+  &quot;aggs&quot;: {
+    &quot;group_by_state&quot;: {
+      &quot;terms&quot;: {
+        &quot;field&quot;: &quot;state.keyword&quot;,
+        &quot;order&quot;: {
+          &quot;average_balance&quot;: &quot;desc&quot;
+        }
+      },
+      &quot;aggs&quot;: {
+        &quot;average_balance&quot;: {
+          &quot;avg&quot;: {
+            &quot;field&quot;: &quot;balance&quot;
+          }
+        }
+      }
+    }
+  }
+}
+&apos;
+# 上面会以按照balance字段avg降序对平均余额进行排序
+curl -XGET &apos;localhost:9200/bank/_search?pretty&apos; -H &apos;Content-Type: application/json&apos; -d&apos;
+{
+  &quot;size&quot;: 0,
+  &quot;aggs&quot;: {
+    &quot;group_by_age&quot;: {
+      &quot;range&quot;: {
+        &quot;field&quot;: &quot;age&quot;,
+        &quot;ranges&quot;: [
+          {
+            &quot;from&quot;: 20,
+            &quot;to&quot;: 30
+          },
+          {
+            &quot;from&quot;: 30,
+            &quot;to&quot;: 40
+          },
+          {
+            &quot;from&quot;: 40,
+            &quot;to&quot;: 50
+          }
+        ]
+      },
+      &quot;aggs&quot;: {
+        &quot;group_by_gender&quot;: {
+          &quot;terms&quot;: {
+            &quot;field&quot;: &quot;gender.keyword&quot;
+          },
+          &quot;aggs&quot;: {
+            &quot;average_balance&quot;: {
+              &quot;avg&quot;: {
+                &quot;field&quot;: &quot;balance&quot;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+&apos;
+#这个例子演示了按年龄段（20-29岁，30-39岁和40-49岁），然后按性别分组，然后最终得到每个年龄段的平均账户余额
 </code></pre>
       
     </div>
@@ -523,7 +738,7 @@ curl -XGET &apos;localhost:9200/bank/_search?q=*&amp;sort=account_number:asc&amp
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Loading-the-Sample-Dataset-加载样本数据集"><span class="nav-number">1.1.</span> <span class="nav-text">Loading the Sample Dataset 加载样本数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Search-API-查询api"><span class="nav-number">1.2.</span> <span class="nav-text">The Search API 查询api</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Loading-the-Sample-Dataset-加载样本数据集"><span class="nav-number">1.1.</span> <span class="nav-text">Loading the Sample Dataset 加载样本数据集</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#The-Search-API-查询api"><span class="nav-number">1.2.</span> <span class="nav-text">The Search API 查询api</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Introducing-the-Query-Language"><span class="nav-number">1.3.</span> <span class="nav-text">Introducing the Query Language</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Executing-Searches-执行搜索"><span class="nav-number">1.4.</span> <span class="nav-text">Executing Searches 执行搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#聚合查询"><span class="nav-number">1.5.</span> <span class="nav-text">聚合查询</span></a></li></ol></li></ol></div>
             
 
           </div>
