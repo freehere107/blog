@@ -1,1 +1,1 @@
-http://www.beautyface.tech/2017/03/28/es初学2/
+http://www.beautyface.tech/2017/03/31/配置elasticsearch对某字段排序/
