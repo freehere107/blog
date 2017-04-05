@@ -1,1 +1,1 @@
-http://www.beautyface.tech/2017/04/01/Analysis，数据挖掘，数据科学，机器学习，大数据的区别是什么？/
+http://www.beautyface.tech/2017/04/05/linux命令行pushd和popd/

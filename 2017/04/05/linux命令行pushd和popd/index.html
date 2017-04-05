@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="logstash,kibana,Elasticsearch," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -87,24 +87,16 @@
 
 
 
-<meta name="description" content="前言看着文档搭建环境搭建了一早上，终于搞好了基础服务的搭建，其中还有很多配置没有搞明白。先把搭建步骤记下来
-Elasticsearch最好处理，无需配置。https://www.elastic.co/downloads/elasticsearch
-$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.">
+<meta name="description" content="pushd 和 popd 命令基础为了更好地理解 pushd 和 popd 命令的作用，让我们先讨论堆栈的概念。想象你厨房案板上有一个空白区域，你想在上面放一套盘子。你会怎么做？很简单，一个接一个地放在上面。所以在整个过程的最后，案板上的第一个盘子是盘子中的最后一个，你手中最后一个盘子是盘子堆中的第一个。现在当你需要一个盘子时，你选择在堆的顶部的那个盘子并使用它，然后需要时选择下一个。pushd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Logstash+Kibana+Elasticsearch构建日志系统">
-<meta property="og:url" content="http://www.beautyface.tech/2017/03/23/Logstash-Kibana-Elasticsearch构建日志系统/index.html">
+<meta property="og:title" content="linux命令行pushd和popd">
+<meta property="og:url" content="http://www.beautyface.tech/2017/04/05/linux命令行pushd和popd/index.html">
 <meta property="og:site_name" content="freehere的博客">
-<meta property="og:description" content="前言看着文档搭建环境搭建了一早上，终于搞好了基础服务的搭建，其中还有很多配置没有搞明白。先把搭建步骤记下来
-Elasticsearch最好处理，无需配置。https://www.elastic.co/downloads/elasticsearch
-$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.">
-<meta property="og:image" content="http://www.beautyface.tech/uploads/kibana.png">
-<meta property="og:updated_time" content="2017-03-29T08:43:14.562Z">
+<meta property="og:description" content="pushd 和 popd 命令基础为了更好地理解 pushd 和 popd 命令的作用，让我们先讨论堆栈的概念。想象你厨房案板上有一个空白区域，你想在上面放一套盘子。你会怎么做？很简单，一个接一个地放在上面。所以在整个过程的最后，案板上的第一个盘子是盘子中的最后一个，你手中最后一个盘子是盘子堆中的第一个。现在当你需要一个盘子时，你选择在堆的顶部的那个盘子并使用它，然后需要时选择下一个。pushd">
+<meta property="og:updated_time" content="2017-04-05T03:37:28.864Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Logstash+Kibana+Elasticsearch构建日志系统">
-<meta name="twitter:description" content="前言看着文档搭建环境搭建了一早上，终于搞好了基础服务的搭建，其中还有很多配置没有搞明白。先把搭建步骤记下来
-Elasticsearch最好处理，无需配置。https://www.elastic.co/downloads/elasticsearch
-$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.">
-<meta name="twitter:image" content="http://www.beautyface.tech/uploads/kibana.png">
+<meta name="twitter:title" content="linux命令行pushd和popd">
+<meta name="twitter:description" content="pushd 和 popd 命令基础为了更好地理解 pushd 和 popd 命令的作用，让我们先讨论堆栈的概念。想象你厨房案板上有一个空白区域，你想在上面放一套盘子。你会怎么做？很简单，一个接一个地放在上面。所以在整个过程的最后，案板上的第一个盘子是盘子中的最后一个，你手中最后一个盘子是盘子堆中的第一个。现在当你需要一个盘子时，你选择在堆的顶部的那个盘子并使用它，然后需要时选择下一个。pushd">
 
 
 
@@ -132,13 +124,13 @@ $ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.">
 
 
 
-  <link rel="canonical" href="http://www.beautyface.tech/2017/03/23/Logstash-Kibana-Elasticsearch构建日志系统/"/>
+  <link rel="canonical" href="http://www.beautyface.tech/2017/04/05/linux命令行pushd和popd/"/>
 
 
 
 
 
-  <title> Logstash+Kibana+Elasticsearch构建日志系统 | freehere的博客 </title>
+  <title> linux命令行pushd和popd | freehere的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -257,7 +249,7 @@ $ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.beautyface.tech/2017/03/23/Logstash-Kibana-Elasticsearch构建日志系统/">
+    <link itemprop="mainEntityOfPage" href="http://www.beautyface.tech/2017/04/05/linux命令行pushd和popd/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="freehere">
@@ -278,7 +270,7 @@ $ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.">
             
             
               
-                Logstash+Kibana+Elasticsearch构建日志系统
+                linux命令行pushd和popd
               
             
           </h2>
@@ -293,8 +285,8 @@ $ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-23T16:48:21+08:00">
-                2017-03-23
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-05T10:10:26+08:00">
+                2017-04-05
               </time>
             
 
@@ -334,66 +326,52 @@ $ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.">
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看着文档搭建环境搭建了一早上，终于搞好了基础服务的搭建，其中还有很多配置没有搞明白。先把搭建步骤记下来</p>
-<h2 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><pre><code>最好处理，无需配置。https://www.elastic.co/downloads/elasticsearch
-$ wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.2.deb
-sudo dpkg -i elasticsearch-5.2.2.deb
-启动 bin/elasticsearch 端口占用9200
-</code></pre><h2 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h2><pre><code>下载安装，https://www.elastic.co/guide/en/kibana/current/deb.html
-wget https://artifacts.elastic.co/downloads/kibana/kibana-5.2.2-amd64.deb
-sudo dpkg -i kibana-5.2.2-amd64.deb
-whereis kibana
-cd /etc/kibana/kibana.yml
-设置 elasticsearch.url: &quot;http://localhost:9200&quot;
-</code></pre><h2 id="Logstash"><a href="#Logstash" class="headerlink" title="Logstash"></a>Logstash</h2><pre><code>https://www.elastic.co/products/logstash
-wget https://artifacts.elastic.co/downloads/logstash/ -5.2.2.tar.gz
-tar -zxvf logstash-5.2.2.tar.gz ~/logstash
-cd logstash
-vim first-pipeline.conf
-input {
-    beats {
-        port =&gt; &quot;5043&quot;
-    }
-}
-# The filter part of this file is commented out to indicate that it is
-# optional.
-filter {
-        grok {
-                match =&gt; { &quot;message&quot; =&gt; &quot;%{COMBINEDAPACHELOG}&quot;}
-        }
-        geoip {
-                 source =&gt; &quot;clientip&quot;
-        }
-}
-output {
-        elasticsearch {
-        hosts =&gt; [ &quot;localhost:9200&quot; ]
-    }
-}
-</code></pre><h2 id="filebeat"><a href="#filebeat" class="headerlink" title="filebeat"></a>filebeat</h2><p>filebeat 为Logstash的一个插件，目的是导入日志数据。</p>
-<pre><code>curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-5.2.2-amd64.deb
-sudo dpkg -i filebeat-5.2.2-amd64.deb
-whereis filebeat
-cd /etc/filebeat
-vim filebeat.yml
-有3个地方需要设置:
-# 配置导入日志的路径
-paths:
-    - /home/sun/log/*
-# 配置es的host
-output.elasticsearch:
-  # Array of hosts to connect to.
-  hosts: [&quot;localhost:9200&quot;]
-# 配置logstash的host
-output.logstash:
-  # The Logstash hosts
-  hosts: [&quot;localhost:5043&quot;]
-</code></pre><h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><ol>
-<li>启动logstash, bin/logstash -f first-pipeline.conf –config.reload.automatic</li>
-<li>启动filebeat导入数据，filebeat.sh -e -c filebeat.yml -d “publish”</li>
-<li>启动kibana,找到kibana目录，whereis kibana,bin/kibana,即可访问<a href="http://localhost:5601" target="_blank" rel="external">http://localhost:5601</a></li>
-</ol>
-<img src="/uploads/kibana.png">
+        <h2 id="pushd-和-popd-命令基础"><a href="#pushd-和-popd-命令基础" class="headerlink" title="pushd 和 popd 命令基础"></a>pushd 和 popd 命令基础</h2><p>为了更好地理解 pushd 和 popd 命令的作用，让我们先讨论堆栈的概念。想象你厨房案板上有一个空白区域，你想在上面放一套盘子。你会怎么做？很简单，一个接一个地放在上面。所以在整个过程的最后，案板上的第一个盘子是盘子中的最后一个，你手中最后一个盘子是盘子堆中的第一个。现在当你需要一个盘子时，你选择在堆的顶部的那个盘子并使用它，然后需要时选择下一个。pushd 和 popd 命令是类似的概念。在 Linux系统上有一个目录堆栈，你可以堆叠目录路径以供将来使用。你可以使用dirs 命令来在任何时间点快速查看堆栈的内容。<br>下面显示了系统上使用 dirs 命令的输出，显示当前所在路径</p>
+<pre><code>$ dirs
+～ 
+</code></pre><p>使用 pushd 和 popd 命令来执行存储目录路径并删除它的操作。</p>
+<pre><code>$ pushd /home/sun/Downloads/
+    ~/Downloads ~
+</code></pre><p>上述命令的作用是，将当前工作目录更改为你作为参数传递的目录，并且还将路径添加到目录堆栈中。为了方便用户，pushd 命令在其输出中产生目录堆栈的内容。<br>输出显示现在堆栈中有两个目录路径：一个是用户的主目录，还有用户的下载目录。它们的保存顺序是：主目录位于底部，新添加的 Downloads 目录位于其上。</p>
+<pre><code>$ pushd /usr/lib/; pushd /home/himanshu/Desktop/
+~/Desktop /usr/lib ~/Downloads ~
+</code></pre><p>所以目录堆栈现在包含总共四个目录路径，其中主目录（~）在底部，并且用户的桌面目录在顶部。<br>一定要记住的是堆栈的头是你当前的目录。这意味着现在我们当前的工作目录是 ~/Desktop。<br>现在，假设你想回到 /usr/lib 目录，所以你所要做的就是执行 popd 命令：</p>
+<pre><code>$ popd
+/usr/lib ~/Downloads ~
+</code></pre><p>popd 命令不仅会将当前目录切换到 /usr/lib，它还会从目录堆栈中删除 ~/Desktop，这一点可以从命令输出中看出。这样，popd 命令将允许你以相反的顺序浏览这些目录。</p>
+<h2 id="一些高级用法"><a href="#一些高级用法" class="headerlink" title="一些高级用法"></a>一些高级用法</h2><p>现在我们已经讨论了 pushd 和 popd 命令的基础知识，让我们继续讨论与这些命令相关的一些其它细节。首先，这些命令还允许你操作目录堆栈。例如，假设你的目录堆栈看起来像这样：</p>
+<pre><code>$ dirs
+~/Desktop /usr/lib ~ ~/Downloads
+</code></pre><p>现在，我们的要求是改变堆栈中目录路径的顺序，最上面的元素（~/Desktop）放到底部，剩下的每个都向上移动一个位置。这可以使用以下命令实现：</p>
+<pre><code>$ pushd +1
+</code></pre><p>上面的命令对目录堆栈做的结果：</p>
+<pre><code>$ dirs
+/usr/lib ~ ~/Downloads ~/Desktop
+</code></pre><p>因此，我们看到目录堆栈中的元素顺序已经改变，并且现在和我们想要的一样。当然，你可以让目录堆栈元素移动任何次数。例如，以下命令会将它们向上移动两次：</p>
+<pre><code>$ pushd +2
+~/Downloads ~/Desktop /usr/lib ~
+</code></pre><p>你也可以使用负的索引值：</p>
+<pre><code>$ pushd -1
+/usr/lib ~ ~/Downloads ~/Desktop
+</code></pre><p>相似地，你可以在popd命令中使用此技术来从目录堆栈删除任何条目，而不用离开当前工作目录。例如，如果要使用 popd 从顶部（目前是 ~/Downloads）删除第三个条目，你可以运行以下命令：</p>
+<pre><code>$ popd +2
+</code></pre><p>记住堆栈索引的初始值是 0，因此我们使用 2 来访问第三个条目。<br>因此目录堆栈现在包含：</p>
+<pre><code>$ dirs
+/usr/lib ~ ~/Desktop
+</code></pre><p>可以在dirs中使用 -v 选项显示元素在目录堆栈中的位置以及它们的索引。</p>
+<pre><code>$ dirs -v
+0 /usr/lib
+1 ~
+2 ~/Desktop
+</code></pre><p>左边的数字是索引，接下来跟的是这个索引对应的目录路径。如果想跳转到哪个目录可</p>
+<pre><code>cd -1
+</code></pre><p>即跳转到索引值为1的目录下</p>
+<blockquote>
+<p>注意： dirs -c 选项清除目录堆栈。</p>
+</blockquote>
+<p>不需 要记住你从哪里来，只要执行一下 popd，你就能回到你来的目录。下面命令使用popd 不产生任何输出。</p>
+<pre><code>popd &gt;/dev/null 2&gt;&amp;1
+</code></pre>
       
     </div>
 
@@ -422,11 +400,7 @@ output.logstash:
       
         <div class="post-tags">
           
-            <a href="/tags/logstash/" rel="tag"># logstash</a>
-          
-            <a href="/tags/kibana/" rel="tag"># kibana</a>
-          
-            <a href="/tags/Elasticsearch/" rel="tag"># Elasticsearch</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
         </div>
       
@@ -439,8 +413,8 @@ output.logstash:
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/21/phpstorm格式化/" rel="next" title="使用php-cs-fixer在phpstorm格式化php代码">
-                <i class="fa fa-chevron-left"></i> 使用php-cs-fixer在phpstorm格式化php代码
+              <a href="/2017/04/01/Analysis，数据挖掘，数据科学，机器学习，大数据的区别是什么？/" rel="next" title="Analysis，数据挖掘，数据科学，机器学习，大数据的区别是什么？">
+                <i class="fa fa-chevron-left"></i> Analysis，数据挖掘，数据科学，机器学习，大数据的区别是什么？
               </a>
             
           </div>
@@ -448,10 +422,6 @@ output.logstash:
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/27/filebeat-config解析/" rel="prev" title="filebeat-config解析">
-                filebeat-config解析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -591,7 +561,7 @@ output.logstash:
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch"><span class="nav-number">2.</span> <span class="nav-text">Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Kibana"><span class="nav-number">3.</span> <span class="nav-text">Kibana</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Logstash"><span class="nav-number">4.</span> <span class="nav-text">Logstash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#filebeat"><span class="nav-number">5.</span> <span class="nav-text">filebeat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行"><span class="nav-number">6.</span> <span class="nav-text">运行</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#pushd-和-popd-命令基础"><span class="nav-number">1.</span> <span class="nav-text">pushd 和 popd 命令基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些高级用法"><span class="nav-number">2.</span> <span class="nav-text">一些高级用法</span></a></li></ol></div>
             
 
           </div>
