@@ -1,1 +1,1 @@
-http://www.beautyface.tech/2017/04/05/linux命令行pushd和popd/
+http://www.beautyface.tech/2017/04/07/nginx反向代理/

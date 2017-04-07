@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="nginx," />
 
 
 
@@ -87,25 +87,22 @@
 
 
 
-<meta name="description" content="nginx作为web服务器由于其优秀的性能和轻量级等特点，被广大开发者使用，那么其中最重要的config其中的参数到底是怎么用的呢？
-
-nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做php的服务器
-123456789101112131415161718192021222324252627282930313233343536373839404142434">
+<meta name="description" content="什么是反向代理(转自知乎https://www.zhihu.com/question/24723688)
+正向代理A同学在大众创业、万众创新的大时代背景下开启他的创业之路，目前他遇到的最大的一个问题就是启动资金，于是他决定去找马云爸爸借钱，可想而知，最后碰一鼻子灰回来了，情急之下，他想到一个办法，找关系开后门，经过一番消息打探，原来A同学的大学老师王老师是马云的同学，于是A同学找到王老师，托王老师">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nginxConf详解">
-<meta property="og:url" content="http://www.beautyface.tech/2017/03/20/nginxConf详解/index.html">
+<meta property="og:title" content="nginx反向代理">
+<meta property="og:url" content="http://www.beautyface.tech/2017/04/07/nginx反向代理/index.html">
 <meta property="og:site_name" content="freehere的博客">
-<meta property="og:description" content="nginx作为web服务器由于其优秀的性能和轻量级等特点，被广大开发者使用，那么其中最重要的config其中的参数到底是怎么用的呢？
-
-nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做php的服务器
-123456789101112131415161718192021222324252627282930313233343536373839404142434">
-<meta property="og:updated_time" content="2017-03-20T10:27:31.455Z">
+<meta property="og:description" content="什么是反向代理(转自知乎https://www.zhihu.com/question/24723688)
+正向代理A同学在大众创业、万众创新的大时代背景下开启他的创业之路，目前他遇到的最大的一个问题就是启动资金，于是他决定去找马云爸爸借钱，可想而知，最后碰一鼻子灰回来了，情急之下，他想到一个办法，找关系开后门，经过一番消息打探，原来A同学的大学老师王老师是马云的同学，于是A同学找到王老师，托王老师">
+<meta property="og:image" content="http://www.beautyface.tech/uploads/v2-07ededff1d415c1fa2db3fd89378eda0_b.jpg">
+<meta property="og:image" content="http://www.beautyface.tech/uploads/v2-816f7595d80b7ef36bf958764a873cba_b.jpg">
+<meta property="og:updated_time" content="2017-04-07T07:37:17.646Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nginxConf详解">
-<meta name="twitter:description" content="nginx作为web服务器由于其优秀的性能和轻量级等特点，被广大开发者使用，那么其中最重要的config其中的参数到底是怎么用的呢？
-
-nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做php的服务器
-123456789101112131415161718192021222324252627282930313233343536373839404142434">
+<meta name="twitter:title" content="nginx反向代理">
+<meta name="twitter:description" content="什么是反向代理(转自知乎https://www.zhihu.com/question/24723688)
+正向代理A同学在大众创业、万众创新的大时代背景下开启他的创业之路，目前他遇到的最大的一个问题就是启动资金，于是他决定去找马云爸爸借钱，可想而知，最后碰一鼻子灰回来了，情急之下，他想到一个办法，找关系开后门，经过一番消息打探，原来A同学的大学老师王老师是马云的同学，于是A同学找到王老师，托王老师">
+<meta name="twitter:image" content="http://www.beautyface.tech/uploads/v2-07ededff1d415c1fa2db3fd89378eda0_b.jpg">
 
 
 
@@ -133,13 +130,13 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
 
 
 
-  <link rel="canonical" href="http://www.beautyface.tech/2017/03/20/nginxConf详解/"/>
+  <link rel="canonical" href="http://www.beautyface.tech/2017/04/07/nginx反向代理/"/>
 
 
 
 
 
-  <title> nginxConf详解 | freehere的博客 </title>
+  <title> nginx反向代理 | freehere的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -258,7 +255,7 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.beautyface.tech/2017/03/20/nginxConf详解/">
+    <link itemprop="mainEntityOfPage" href="http://www.beautyface.tech/2017/04/07/nginx反向代理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="freehere">
@@ -279,7 +276,7 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
             
             
               
-                nginxConf详解
+                nginx反向代理
               
             
           </h2>
@@ -294,8 +291,8 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-20T15:35:16+08:00">
-                2017-03-20
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-07T14:19:13+08:00">
+                2017-04-07
               </time>
             
 
@@ -335,10 +332,26 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
       
 
       
-        <h2 id="nginx"><a href="#nginx" class="headerlink" title="nginx"></a>nginx</h2><blockquote><p>作为web服务器由于其优秀的性能和轻量级等特点，被广大开发者使用，那么其中最重要的config其中的参数到底是怎么用的呢？</p>
-</blockquote>
-<h2 id="nginx-conf"><a href="#nginx-conf" class="headerlink" title="nginx.conf"></a>nginx.conf</h2><p>下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做php的服务器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">user www-data; # 运行服务的用户及用户组</div><div class="line">worker_processes auto; # worker进程的数目，配置与CPU内核数相等的worker进程 </div><div class="line">pid /run/nginx.pid; # 进程pid文件</div><div class="line">worker_rlimit_nofile 100000;</div><div class="line"></div><div class="line">events &#123;</div><div class="line">	# 设置一个worker能够同时打开的最大连接数,在nginx作为http服务器的时候，最大连接数为worker_processes*worker_connctions</div><div class="line">	# 在nginx作为反向代理服务器的时候，最大连接数为worker_processes*worker_connections/ 2</div><div class="line">	worker_connections 768; # 1024*768?</div><div class="line">	# multi_accept on;　# 默认off,一个worker进程将一次接受一个新连接。否则，worker进程将一次接受所有新连接</div><div class="line">&#125;</div><div class="line">http &#123;</div><div class="line">	sendfile on; # 是否激活sendfile()函数</div><div class="line">	tcp_nopush on; # 将HTTP响应头压缩到一个包中发送，仅在sendfile开启时才能配合使用 </div><div class="line">	tcp_nodelay on; # 立即发送小块数据</div><div class="line">	keepalive_timeout 65;　＃　最大等待时间</div><div class="line">	＃　影响散列表的冲突率。types_hash_max_size越大，就会消耗更多的内存，但散列key的冲突率会降低，检索速度就更快。</div><div class="line">	＃　types_hash_max_size越小，消耗的内存就越小，但散列key的冲突率可能上升。</div><div class="line">	types_hash_max_size 2048;</div><div class="line">	# server_tokens off;＃　默认on,启用或禁用在错误页面上和http header server</div><div class="line">	# 保存服务器名字的hash表是由指令server_names_hash_max_size 和server_names_hash_bucket_size所控制的。</div><div class="line">	# 参数hash bucket size总是等于hash表的大小，并且是一路处理器缓存大小的倍数。在减少了在内存中的存取次数后，使在处理器中加速查找hash表键值成为可能。</div><div class="line">	# 如果hash bucket size等于一路处理器缓存的大小，那么在查找键的时候，最坏的情况下在内存中查找的次数为2。第一次是确定存储单元的地址，</div><div class="line">	# 第二次是在存储单元中查找键 值。因此，如果Nginx给出需要增大hash max size 或 hash bucket size的提示，那么首要的是增大前一个参数的大小.</div><div class="line">	# server_names_hash_bucket_size 64;</div><div class="line">	# server_name_in_redirect off;# 启用或禁用使用由server_name指令指定的主服务器名称,默认off</div><div class="line">	include /etc/nginx/mime.types; #mine.type 配置文件</div><div class="line">	default_type application/octet-stream;# 定义响应的默认MIME类型</div><div class="line">	ssl_protocols TLSv1 TLSv1.1 TLSv1.2; ＃ ssl相关配置</div><div class="line">	ssl_prefer_server_ciphers on;       　＃ ssl相关配置</div><div class="line">	access_log /var/log/nginx/access.log;　＃access.log日志地址</div><div class="line">	error_log /var/log/nginx/error.log;    ＃error.log日志地址</div><div class="line">	＃日志格式</div><div class="line">	log_format  main  &apos;$remote_addr - $remote_user [$time_local] &quot;$request&quot; &apos;</div><div class="line">                      &apos;$status $body_bytes_sent $request_body &quot;$http_referer&quot; &apos;</div><div class="line">                      &apos;&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot; &quot;$request_time&quot;&apos;;　</div><div class="line">	gzip on;　＃开启gzip模块</div><div class="line">	gzip_disable &quot;msie6&quot;;　＃ie6不可用</div><div class="line">	# gzip_vary on;＃　和http头有关系，加个vary头，给代理服务器用的，有的浏览器支持压缩，有的不支持，所以避免浪费不支持的也压缩，所以根据客户端的HTTP头来判断，是否需要压缩</div><div class="line">	# 默认值：off</div><div class="line">	# Nginx作为反向代理的时候启用，开启或者关闭后端服务器返回的结果，匹配的前提是后端服务器必须要返回包含&quot;Via&quot;的 header头。</div><div class="line">    # off - 关闭所有的代理结果数据的压缩</div><div class="line">    # expired - 启用压缩，如果header头中包含 &quot;Expires&quot; 头信息</div><div class="line">    # no-cache - 启用压缩，如果header头中包含 &quot;Cache-Control:no-cache&quot; 头信息</div><div class="line">    # no-store - 启用压缩，如果header头中包含 &quot;Cache-Control:no-store&quot; 头信息</div><div class="line">    # private - 启用压缩，如果header头中包含 &quot;Cache-Control:private&quot; 头信息</div><div class="line">    # no_last_modified - 启用压缩,如果header头中不包含 &quot;Last-Modified&quot; 头信息</div><div class="line">    # no_etag - 启用压缩 ,如果header头中不包含 &quot;ETag&quot; 头信息</div><div class="line">    # auth - 启用压缩 , 如果header头中包含 &quot;Authorization&quot; 头信息</div><div class="line">    # any - 无条件启用压缩</div><div class="line">	# gzip_proxied any;</div><div class="line">	# gzip_comp_level 6; # gzip压缩比/压缩级别，压缩级别 1-9，级别越高压缩率越大，当然压缩时间也就越长</div><div class="line">	# gzip_buffers 16 8k;# 设置系统获取几个单位的缓存用于存储gzip的压缩结果数据流</div><div class="line">	# gzip_http_version 1.1; # HTTP/1.1协议的请求才进行gzip压缩</div><div class="line">	# 压缩类型，匹配MIME类型进行压缩</div><div class="line">	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;</div><div class="line">	include /etc/nginx/conf.d/*.conf;　＃　额外的配置</div><div class="line">	include /etc/nginx/sites-enabled/*;＃　虚拟主机</div><div class="line">&#125;</div><div class="line"></div></pre></td></tr></table></figure>
+        <h2 id="什么是反向代理"><a href="#什么是反向代理" class="headerlink" title="什么是反向代理"></a>什么是反向代理</h2><p>(转自知乎<a href="https://www.zhihu.com/question/24723688" target="_blank" rel="external">https://www.zhihu.com/question/24723688</a>)</p>
+<h3 id="正向代理"><a href="#正向代理" class="headerlink" title="正向代理"></a>正向代理</h3><p>A同学在大众创业、万众创新的大时代背景下开启他的创业之路，目前他遇到的最大的一个问题就是启动资金，于是他决定去找马云爸爸借钱，可想而知，最后碰一鼻子灰回来了，情急之下，他想到一个办法，找关系开后门，经过一番消息打探，原来A同学的大学老师王老师是马云的同学，于是A同学找到王老师，托王老师帮忙去马云那借500万过来，当然最后事成了。不过马云并不知道这钱是A同学借的，马云是借给王老师的，最后由王老师转交给A同学。这里的王老师在这个过程中扮演了一个非常关键的角色，就是代理，也可以说是正向代理，王老师代替A同学办这件事，这个过程中，真正借钱的人是谁，马云是不知道的，这点非常关键。</p>
+<p>我们常说的代理也就是只正向代理，正向代理的过程，它隐藏了真实的请求客户端，服务端不知道真实的客户端是谁，客户端请求的服务都被代理服务器代替来请求，某些科学上网工具扮演的就是典型的正向代理角色。用浏览器访问google时，被残忍的block，于是你可以在国外搭建一台代理服务器，让代理帮我去请求google.com，代理把请求返回的相应结构再返回给我。</p>
+<img src="/uploads/v2-07ededff1d415c1fa2db3fd89378eda0_b.jpg">
+<h3 id="反向代理"><a href="#反向代理" class="headerlink" title="反向代理"></a>反向代理</h3><p>大家都有过这样的经历，拨打10086客服电话，可能一个地区的10086客服有几个或者几十个，你永远都不需要关心在电话那头的是哪一个，叫什么，男的，还是女的，漂亮的还是帅气的，你都不关心，你关心的是你的问题能不能得到专业的解答，你只需要拨通了10086的总机号码，电话那头总会有人会回答你，只是有时慢有时快而已。那么这里的10086总机号码就是我们说的反向代理。客户不知道真正提供服务人的是谁。</p>
+<p>反向代理隐藏了真实的服务端，当我们请求ww.baidu.com 的时候，就像拨打10086一样，背后可能有成千上万台服务器为我们服务，但具体是哪一台，你不知道，也不需要知道，你只需要知道反向代理服务器是谁就好了，ww.baidu.com 就是我们的反向代理服务器，反向代理服务器会帮我们把请求转发到真实的服务器那里去。Nginx就是性能非常好的反向代理服务器，用来做负载均衡。</p>
+<img src="/uploads/v2-816f7595d80b7ef36bf958764a873cba_b.jpg">
+<h2 id="nginx反向代理设置"><a href="#nginx反向代理设置" class="headerlink" title="nginx反向代理设置"></a>nginx反向代理设置</h2><p>nginx反向代理设置非常简单，只需要设置location。</p>
+<ol>
+<li>找到nginx配置文件</li>
+<li>在location / 下加一个新的“路由”</li>
+<li>修改这个路由为符合正则表达需要进行代理的请求<pre><code>location ^~/api/{
+    rewrite ^/api/(.*)$ /$1 break; 
+    proxy_pass http://www.baidu.com/; # 反向代理服务器
+}
+</code></pre></li>
+<li>保存后，nginx reload,访问127.0.0.1/api,会反向代理到www.baidu.com/api/…</li>
+<li>可解决ajax 跨域的问题</li>
+</ol>
+
       
     </div>
 
@@ -365,6 +378,12 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/nginx/" rel="tag"># nginx</a>
+          
+        </div>
+      
 
       
         
@@ -374,8 +393,8 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/20/从运行原理及使用场景看Apache和Nginx/" rel="next" title="从运行原理及使用场景看Apache和Nginx">
-                <i class="fa fa-chevron-left"></i> 从运行原理及使用场景看Apache和Nginx
+              <a href="/2017/04/05/linux命令行pushd和popd/" rel="next" title="linux命令行pushd和popd">
+                <i class="fa fa-chevron-left"></i> linux命令行pushd和popd
               </a>
             
           </div>
@@ -383,10 +402,6 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/20/linux-group/" rel="prev" title="linux-group">
-                linux-group <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -526,7 +541,7 @@ nginx.conf下面是本地配置在ubuntu上的nginx,apt-get安装,目前用做ph
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx"><span class="nav-number">1.</span> <span class="nav-text">nginx</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx-conf"><span class="nav-number">2.</span> <span class="nav-text">nginx.conf</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是反向代理"><span class="nav-number">1.</span> <span class="nav-text">什么是反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#正向代理"><span class="nav-number">1.1.</span> <span class="nav-text">正向代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#反向代理"><span class="nav-number">1.2.</span> <span class="nav-text">反向代理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#nginx反向代理设置"><span class="nav-number">2.</span> <span class="nav-text">nginx反向代理设置</span></a></li></ol></div>
             
 
           </div>
