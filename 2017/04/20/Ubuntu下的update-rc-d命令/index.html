@@ -71,7 +71,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="碎事," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -87,31 +87,19 @@
 
 
 
-<meta name="description" content="起点首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。目前的方向近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作
-vue
-python
-django 
-numpy
-tensor">
+<meta name="description" content="update-rc.d 概览和系统启动计算机在启动的时候会自动执行一些脚本，用于启动一些应用程序服务，update-rc.d 是管理这些脚本的常用命令之一。update-rc.d 是一个 Ubuntu 和 Debian 下的工具程序，用来添加和移除 System-V 类型的启动脚本。
+这些脚本都叫做「System-V init script」，且以实际文件而不是链接文件的方式存储在 /etc/in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="写博客之前">
-<meta property="og:url" content="http://www.beautyface.tech/2017/03/17/写博客之前/index.html">
+<meta property="og:title" content="Ubuntu下的update-rc.d命令">
+<meta property="og:url" content="http://www.beautyface.tech/2017/04/20/Ubuntu下的update-rc-d命令/index.html">
 <meta property="og:site_name" content="freehere的博客">
-<meta property="og:description" content="起点首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。目前的方向近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作
-vue
-python
-django 
-numpy
-tensor">
-<meta property="og:updated_time" content="2017-03-22T02:35:40.483Z">
+<meta property="og:description" content="update-rc.d 概览和系统启动计算机在启动的时候会自动执行一些脚本，用于启动一些应用程序服务，update-rc.d 是管理这些脚本的常用命令之一。update-rc.d 是一个 Ubuntu 和 Debian 下的工具程序，用来添加和移除 System-V 类型的启动脚本。
+这些脚本都叫做「System-V init script」，且以实际文件而不是链接文件的方式存储在 /etc/in">
+<meta property="og:updated_time" content="2017-04-20T09:48:47.271Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="写博客之前">
-<meta name="twitter:description" content="起点首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。目前的方向近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作
-vue
-python
-django 
-numpy
-tensor">
+<meta name="twitter:title" content="Ubuntu下的update-rc.d命令">
+<meta name="twitter:description" content="update-rc.d 概览和系统启动计算机在启动的时候会自动执行一些脚本，用于启动一些应用程序服务，update-rc.d 是管理这些脚本的常用命令之一。update-rc.d 是一个 Ubuntu 和 Debian 下的工具程序，用来添加和移除 System-V 类型的启动脚本。
+这些脚本都叫做「System-V init script」，且以实际文件而不是链接文件的方式存储在 /etc/in">
 
 
 
@@ -139,13 +127,13 @@ tensor">
 
 
 
-  <link rel="canonical" href="http://www.beautyface.tech/2017/03/17/写博客之前/"/>
+  <link rel="canonical" href="http://www.beautyface.tech/2017/04/20/Ubuntu下的update-rc-d命令/"/>
 
 
 
 
 
-  <title> 写博客之前 | freehere的博客 </title>
+  <title> Ubuntu下的update-rc.d命令 | freehere的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -264,7 +252,7 @@ tensor">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.beautyface.tech/2017/03/17/写博客之前/">
+    <link itemprop="mainEntityOfPage" href="http://www.beautyface.tech/2017/04/20/Ubuntu下的update-rc-d命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="freehere">
@@ -285,7 +273,7 @@ tensor">
             
             
               
-                写博客之前
+                Ubuntu下的update-rc.d命令
               
             
           </h2>
@@ -300,8 +288,8 @@ tensor">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-17T16:47:13+08:00">
-                2017-03-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-20T17:43:39+08:00">
+                2017-04-20
               </time>
             
 
@@ -341,16 +329,41 @@ tensor">
       
 
       
-        <h2 id="起点"><a href="#起点" class="headerlink" title="起点"></a>起点</h2><h3 id="首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。"><a href="#首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。" class="headerlink" title="首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。"></a>首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。</h3><h2 id="目前的方向"><a href="#目前的方向" class="headerlink" title="目前的方向"></a>目前的方向</h2><h3 id="近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作"><a href="#近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作" class="headerlink" title="近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作"></a>近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作</h3><ul>
-<li>vue</li>
-<li>python</li>
-<li>django </li>
-<li>numpy</li>
-<li>tensorFlow</li>
-<li>nginx 内核与apache</li>
-<li>php 内核</li>
-</ul>
-
+        <h2 id="update-rc-d-概览和系统启动"><a href="#update-rc-d-概览和系统启动" class="headerlink" title="update-rc.d 概览和系统启动"></a>update-rc.d 概览和系统启动</h2><p>计算机在启动的时候会自动执行一些脚本，用于启动一些应用程序服务，update-rc.d 是管理这些脚本的常用命令之一。<br>update-rc.d 是一个 Ubuntu 和 Debian 下的工具程序，用来添加和移除 System-V 类型的启动脚本。</p>
+<p>这些脚本都叫做「System-V init script」，且以实际文件而不是链接文件的方式存储在 /etc/init.d 目录下。（之所以强调实际文件后文会解释原因）其他的 Linux 发行版（例如红帽）使用 chkconfig 这个命令。<br>update-rc.d 就是通过管理 /etc/init.d 目录下的脚本文件来管理系统启动时的计划任务的，例如 ssh 服务、Apache 服务、MySQL 服务等。<br>因此 /etc/init.d 目录就是系统的启动脚本所在的目录，其中的每一个文件都是一个启动脚本，都代表了某一类应用程序服务。除非我们要手动编写启动脚本，否则我们不需要修改这个目录下的文件，在安装一些需要开机启动的应用程序的时候对应的脚本会自动被添加进去。</p>
+<p>而系统还有另外一类目录叫 /etc/rcX.d，X 代表了 Linux 系统的运行级别。总共有 7 种运行级别，因此就有 7 个 /etc/rcX.d 目录（例如 /etc/rc5.d、/etc/rc0.d）。<br>/etc/rcX.d 目录下都是一些符号链接文件，这些链接文件都指向 /etc/init.d 目录下的脚本文件，命名规则为 K+NN+服务名或 S+NN+服务名，其中 NN 为两位数字。系统会根据指定的运行级别进入对应的 /etc/rcX.d 目录，并按照文件名顺序检索目录下的链接文件。<br>– 对于以 K 开头的文件，系统将终止对应的服务<br>– 对于以 S 开头的文件，系统将启动对应的服务</p>
+<p>所以，到这而 Linux 启动项的内部实现就大致明晰了：如果在某一运行级别下，对应的 /etc/rcX.d 下的链接文件决定了启动时系统对于这些脚本所采取的行动。换句话说，修改 /etc/rcX.d 下的文件可完成系统启动项的配置。但是这样的方法过于繁琐，所以才有了 update-rc.d 命令，它通过直接检索脚本名称和相应的参数来快速管理这些启动脚本。</p>
+<p>总结起来就是：</p>
+<ol>
+<li>/etc/init.d 目录下存放系统启动时执行的脚本</li>
+<li>/etc/rcX.d 目录下存放脚本在不同运行级别下的链接文件</li>
+<li>通过修改 /etc/rcX.d 目录可完成 Linux 下启动脚本的配置</li>
+<li>通过 update-rc.d 命令快速实现上一条描述的情况</li>
+</ol>
+<h3 id="update-rc-d-命令的脚本管理"><a href="#update-rc-d-命令的脚本管理" class="headerlink" title="update-rc.d 命令的脚本管理"></a>update-rc.d 命令的脚本管理</h3><p>使用 update-rc.d 命令需要指定脚本名称和一些参数，它的格式看起来是这样的（需要在 root 权限下）：</p>
+<pre><code>update-rc.d [-n] [-f] &lt;basename&gt; remove
+update-rc.d [-n] &lt;basename&gt; defaults
+update-rc.d [-n] &lt;basename&gt; disable|enable [S|2|3|4|5]
+update-rc.d &lt;basename&gt; start|stop &lt;NN&gt; &lt;runlevels&gt;
+-n: not really
+-f: force
+</code></pre><p>其中：<br>disable|enable 代表脚本还在 /etc/init.d 中，并设置当前状态是手动启动还是自动启动。<br>start|stop 代表脚本还在 /etc/init.d 中，开机，并设置当前状态是开始运行还是停止运行。（启用后可配置开始运行与否）<br>NN 是一个决定启动顺序的两位数字值。（例如 90 大于 80，因此 80 对应的脚本先启动或先停止）<br>runlevels 则指定了运行级别。</p>
+<p>例如，添加一个新的启动脚本 sample_init_script，并且指定为默认启动顺序、默认运行级别（还记得前面说的吗，首先要有实际的文件存在于 /etc/init.d，即若文件 /etc/init.d/sample_init_script 不存在，则该命令不会执行）：</p>
+<pre><code>$ update-rc.d sample_init_script defaults
+</code></pre><p>上一条命令等效于（中间是一个英文句点符号）：</p>
+<pre><code>$ update-rc.d sample_init_script start 20 2 3 4 5 . stop 20 0 1 6
+</code></pre><p>安装一个启动脚本 sample_init_script，指定默认运行级别，但启动顺序为 50：</p>
+<pre><code>$ update-rc.d sample_init_script defaults 50
+</code></pre><p>安装两个启动脚本 A、B，让 A 先于 B 启动，后于 B 停止：</p>
+<pre><code>$ update-rc.d A 10 40
+$ update-rc.d B 20 30
+</code></pre><p>删除一个启动脚本 sample_init_script，如果脚本不存在则直接跳过：</p>
+<pre><code>$ update-rc.d -f sample_init_script remove
+</code></pre><p>这一条命令实际上做的就是一一删除所有位于 /etc/rcX.d 目录下指向 /etc/init.d 中 sample_init_script 的链接（可能存在多个链接文件），update-rc.d 只不过简化了这一步骤。</p>
+<p>常见启动脚本管理<br>禁止 Apache/MySQL 相关组件开机自启：</p>
+<pre><code>$ update-rc.d -f apache2 remove
+$ update-rc.d -f mysql remove
+</code></pre>
       
     </div>
 
@@ -379,7 +392,7 @@ tensor">
       
         <div class="post-tags">
           
-            <a href="/tags/碎事/" rel="tag"># 碎事</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
         </div>
       
@@ -392,15 +405,15 @@ tensor">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/04/07/nginx反向代理/" rel="next" title="nginx反向代理">
+                <i class="fa fa-chevron-left"></i> nginx反向代理
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/20/从运行原理及使用场景看Apache和Nginx/" rel="prev" title="从运行原理及使用场景看Apache和Nginx">
-                从运行原理及使用场景看Apache和Nginx <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -540,7 +553,7 @@ tensor">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#起点"><span class="nav-number">1.</span> <span class="nav-text">起点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。"><span class="nav-number">1.1.</span> <span class="nav-text">首先我是想把之前记的一些笔记（转载的文章）专门存在一个地方，另外每次转的文章也有一些问题，并没有做整理，想通过写博客把一些重要的知识记录下来，争取每天都能写点东西吧。</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#目前的方向"><span class="nav-number">2.</span> <span class="nav-text">目前的方向</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作"><span class="nav-number">2.1.</span> <span class="nav-text">近期学习并不顺利，vue，django，python还有机器学习一起学习和还有每天的工作，乱七八糟。准备将学习分解成多个部分进行，每天都进行一些计划内的工作</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#update-rc-d-概览和系统启动"><span class="nav-number">1.</span> <span class="nav-text">update-rc.d 概览和系统启动</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#update-rc-d-命令的脚本管理"><span class="nav-number">1.1.</span> <span class="nav-text">update-rc.d 命令的脚本管理</span></a></li></ol></li></ol></div>
             
 
           </div>

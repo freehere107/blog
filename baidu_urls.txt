@@ -1,1 +1,1 @@
-http://www.beautyface.tech/2017/04/07/nginx反向代理/
+http://www.beautyface.tech/2017/04/20/Ubuntu下的update-rc-d命令/
