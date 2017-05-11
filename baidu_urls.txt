@@ -1,1 +1,1 @@
-http://www.beautyface.tech/blog/blog/2017/05/11/npmANDyarn使用/
+http://www.beautyface.tech/2017/05/11/npmANDyarn使用/
