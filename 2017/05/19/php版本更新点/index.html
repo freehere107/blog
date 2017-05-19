@@ -1,0 +1,1128 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="baidu-site-verification" content="7OzJeFuBVs" />
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="php," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="##简介
+
+PHP5.2 以前：autoload, PDO 和 MySQLi, 类型约束
+PHP5.2：JSON 支持
+PHP5.3：弃用的功能，匿名函数，新增魔术方法，命名空间，后期静态绑定，Heredoc 和 Nowdoc, const, 三元运算符，Phar
+PHP5.4：Short Open Tag, 数组简写形式，Traits, 内置 Web 服务器，细节修改
+PHP5.5：yield,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php版本更新点">
+<meta property="og:url" content="http://www.beautyface.tech/2017/05/19/php版本更新点/index.html">
+<meta property="og:site_name" content="freehere的博客">
+<meta property="og:description" content="##简介
+
+PHP5.2 以前：autoload, PDO 和 MySQLi, 类型约束
+PHP5.2：JSON 支持
+PHP5.3：弃用的功能，匿名函数，新增魔术方法，命名空间，后期静态绑定，Heredoc 和 Nowdoc, const, 三元运算符，Phar
+PHP5.4：Short Open Tag, 数组简写形式，Traits, 内置 Web 服务器，细节修改
+PHP5.5：yield,">
+<meta property="og:updated_time" content="2017-05-19T06:41:16.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="php版本更新点">
+<meta name="twitter:description" content="##简介
+
+PHP5.2 以前：autoload, PDO 和 MySQLi, 类型约束
+PHP5.2：JSON 支持
+PHP5.3：弃用的功能，匿名函数，新增魔术方法，命名空间，后期静态绑定，Heredoc 和 Nowdoc, const, 三元运算符，Phar
+PHP5.4：Short Open Tag, 数组简写形式，Traits, 内置 Web 服务器，细节修改
+PHP5.5：yield,">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://www.beautyface.tech/2017/05/19/php版本更新点/"/>
+
+
+
+
+
+  <title> php版本更新点 | freehere的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">freehere的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description">每天搬砖的少年</h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.beautyface.tech/2017/05/19/php版本更新点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="freehere">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/7080674.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="freehere的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+            
+            
+              
+                php版本更新点
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-19T14:29:48+08:00">
+                2017-05-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>##简介</p>
+<ol>
+<li>PHP5.2 以前：autoload, PDO 和 MySQLi, 类型约束</li>
+<li>PHP5.2：JSON 支持</li>
+<li>PHP5.3：弃用的功能，匿名函数，新增魔术方法，命名空间，后期静态绑定，Heredoc 和 Nowdoc, const, 三元运算符，Phar</li>
+<li>PHP5.4：Short Open Tag, 数组简写形式，Traits, 内置 Web 服务器，细节修改</li>
+<li>PHP5.5：yield, list() 用于 foreach, 细节修改</li>
+<li>PHP5.6: 常量增强，可变函数参数，命名空间增强</li>
+</ol>
+<h2 id="PHP5-2以前"><a href="#PHP5-2以前" class="headerlink" title="PHP5.2以前"></a>PHP5.2以前</h2><p>(2006前)<br>顺便介绍一下 PHP5.2 已经出现但值得介绍的特征。</p>
+<h3 id="autoload"><a href="#autoload" class="headerlink" title="autoload"></a>autoload</h3><p>大家可能都知道 __autoload() 函数，如果定义了该函数，那么当在代码中使用一个未定义的类的时候，该函数就会被调用，你可以在该函数中加载相应的类实现文件，如：</p>
+<pre><code>function __autoload($classname)
+{
+    require_once(&quot;{$classname}.php&quot;)
+}
+</code></pre><p>但该函数已经不被建议使用，原因是一个项目中仅能有一个这样的 __autoload() 函数，因为 PHP 不允许函数重名。但当你使用一些类库的时候，难免会出现多个 autoload 函数的需要，于是 spl_autoload_register() 取而代之：</p>
+<pre><code>spl_autoload_register(function($classname)
+{
+    require_once(&quot;{$classname}.php&quot;)
+});
+</code></pre><p>spl_autoload_register() 会将一个函数注册到 autoload 函数列表中，当出现未定义的类的时候，SPL [注] 会按照注册的倒序逐个调用被注册的 autoload 函数，这意味着你可以使用 spl_autoload_register() 注册多个 autoload 函数.</p>
+<p>注：SPL: Standard PHP Library, 标准 PHP 库, 被设计用来解决一些经典问题(如数据结构).</p>
+<h3 id="PDO-和-MySQLi"><a href="#PDO-和-MySQLi" class="headerlink" title="PDO 和 MySQLi"></a>PDO 和 MySQLi</h3><p>即 PHP Data Object, PHP 数据对象，这是 PHP 的新式数据库访问接口。</p>
+<p>按照传统的风格，访问 MySQL 数据库应该是这样子：</p>
+<pre><code>// 连接到服务器，选择数据库
+$conn = mysql_connect(&quot;localhost&quot;, &quot;user&quot;, &quot;password&quot;);
+mysql_select_db(&quot;database&quot;);
+
+// 执行 SQL 查询
+$type = $_POST[&apos;type&apos;];
+$sql = &quot;SELECT * FROM `table` WHERE `type` = {$type}&quot;;
+$result = mysql_query($sql);
+
+// 打印结果
+while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+{
+    foreach($row as $k =&gt; $v)
+        print &quot;{$k}: {$v}\n&quot;;
+}
+
+// 释放结果集，关闭连接
+mysql_free_result($result);
+mysql_close($conn);
+</code></pre><p>为了能够让代码实现数据库无关，即一段代码同时适用于多种数据库(例如以上代码仅仅适用于MySQL)，PHP 官方设计了 PDO.<br>除此之外，PDO 还提供了更多功能，比如：</p>
+<h3 id="面向对象风格的接口"><a href="#面向对象风格的接口" class="headerlink" title="面向对象风格的接口"></a>面向对象风格的接口</h3><p>SQL预编译(prepare), 占位符语法<br>更高的执行效率，作为官方推荐，有特别的性能优化<br>支持大部分SQL数据库，更换数据库无需改动代码<br>上面的代码用 PDO 实现将会是这样：</p>
+<pre><code>// 连接到数据库
+$conn = new PDO(&quot;mysql:host=localhost;dbname=database&quot;, &quot;user&quot;, &quot;password&quot;);
+
+// 预编译SQL, 绑定参数
+$query = $conn-&gt;prepare(&quot;SELECT * FROM `table` WHERE `type` = :type&quot;);
+$query-&gt;bindParam(&quot;type&quot;, $_POST[&apos;type&apos;]);
+
+// 执行查询并打印结果
+foreach($query-&gt;execute() as $row)
+{
+    foreach($row as $k =&gt; $v)
+        print &quot;{$k}: {$v}\n&quot;;
+}
+</code></pre><p>PDO 是官方推荐的，更为通用的数据库访问方式，如果你没有特殊需求，那么你最好学习和使用 PDO.<br>但如果你需要使用 MySQL 所特有的高级功能，那么你可能需要尝试一下 MySQLi, 因为 PDO 为了能够同时在多种数据库上使用，不会包含那些 MySQL 独有的功能。</p>
+<p>MySQLi 是 MySQL 的增强接口，同时提供面向过程和面向对象接口，也是目前推荐的 MySQL 驱动，旧的C风格 MySQL 接口将会在今后被默认关闭。<br>MySQLi 的用法和以上两段代码相比，没有太多新概念，在此不再给出示例，可以参见 PHP 官网文档 [注]。</p>
+<p>注：<a href="http://www.php.net/manual/en/mysqli.quickstart.php" target="_blank" rel="external">http://www.php.net/manual/en/mysqli.quickstart.php</a></p>
+<h3 id="类型约束"><a href="#类型约束" class="headerlink" title="类型约束"></a>类型约束</h3><p>通过类型约束可以限制参数的类型，不过这一机制并不完善，目前仅适用于类和 callable(可执行类型) 以及 array(数组), 不适用于 string 和 int.</p>
+<pre><code>// 限制第一个参数为 MyClass, 第二个参数为可执行类型，第三个参数为数组
+function MyFunction(MyClass $a, callable $b, array $c)
+{
+    // ...
+}
+</code></pre><h2 id="PHP5-2"><a href="#PHP5-2" class="headerlink" title="PHP5.2"></a>PHP5.2</h2><p>(2006-2011)</p>
+<h3 id="JSON-支持"><a href="#JSON-支持" class="headerlink" title="JSON 支持"></a>JSON 支持</h3><p>包括 json_encode(), json_decode() 等函数，JSON 算是在 Web 领域非常常用的数据交换格式，可以被 JS 直接支持，JSON 实际上是 JS 语法的一部分。<br>JSON 系列函数，可以将 PHP 中的数组结构与 JSON 字符串进行转换：</p>
+<pre><code>$array = [&quot;key&quot; =&gt; &quot;value&quot;, &quot;array&quot; =&gt; [1, 2, 3, 4]];
+$json = json_encode($array);
+echo &quot;{$json}\n&quot;;
+
+$object = json_decode($json);
+print_r($object);
+输出：
+
+{&quot;key&quot;:&quot;value&quot;,&quot;array&quot;:[1,2,3,4]}
+stdClass Object
+(
+    [key] =&gt; value
+    [array] =&gt; Array
+        (
+            [0] =&gt; 1
+            [1] =&gt; 2
+            [2] =&gt; 3
+            [3] =&gt; 4
+        )
+)
+</code></pre><p>值得注意的是 json_decode() 默认会返回一个对象而非数组，如果需要返回数组需要将第二个参数设置为 true.</p>
+<h2 id="PHP5-3"><a href="#PHP5-3" class="headerlink" title="PHP5.3"></a>PHP5.3</h2><p>(2009-2012)</p>
+<p>PHP5.3 算是一个非常大的更新，新增了大量新特征，同时也做了一些不向下兼容的修改。</p>
+<h3 id="弃用的功能"><a href="#弃用的功能" class="headerlink" title="弃用的功能"></a>弃用的功能</h3><p>以下几个功能被弃用，若在配置文件中启用，则 PHP 会在运行时发出警告。</p>
+<h4 id="Register-Globals"><a href="#Register-Globals" class="headerlink" title="Register Globals"></a>Register Globals</h4><p>这是 php.ini 中的一个选项(register_globals), 开启后会将所有表单变量($_GET和$_POST)注册为全局变量.<br>看下面的例子：</p>
+<p>if(isAuth())<br>    $authorized = true;<br>if($authorized)<br>    include(“page.php”);<br>这段代码在通过验证时，将 $authorized 设置为 true. 然后根据 $authorized 的值来决定是否显示页面.</p>
+<p>但由于并没有事先把 $authorized 初始化为 false, 当 register_globals 打开时，可能访问 /auth.php?authorized=1 来定义该变量值，绕过身份验证。</p>
+<p>该特征属于历史遗留问题，在 PHP4.2 中被默认关闭，在 PHP5.4 中被移除。</p>
+<h4 id="Magic-Quotes"><a href="#Magic-Quotes" class="headerlink" title="Magic Quotes"></a>Magic Quotes</h4><p>对应 php.ini 中的选项 magic_quotes_gpc, 这个特征同样属于历史遗留问题，已经在 PHP5.4 中移除。</p>
+<p>该特征会将所有用户输入进行转义，这看上去不错，在第一章我们提到过要对用户输入进行转义。<br>但是 PHP 并不知道哪些输入会进入 SQL , 哪些输入会进入 Shell, 哪些输入会被显示为 HTML, 所以很多时候这种转义会引起混乱。</p>
+<h4 id="Safe-Mode"><a href="#Safe-Mode" class="headerlink" title="Safe Mode"></a>Safe Mode</h4><p>很多虚拟主机提供商使用 Safe Mode 来隔离多个用户，但 Safe Mode 存在诸多问题，例如某些扩展并不按照 Safe Mode 来进行权限控制。<br>PHP官方推荐使用操作系统的机制来进行权限隔离，让Web服务器以不同的用户权限来运行PHP解释器，请参见第一章中的最小权限原则.</p>
+<h3 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a>匿名函数</h3><p>也叫闭包(Closures), 经常被用来临时性地创建一个无名函数，用于回调函数等用途。</p>
+<pre><code>$func = function($arg)
+{
+    print $arg;
+};
+
+$func(&quot;Hello World&quot;);
+</code></pre><p>以上代码定义了一个匿名函数，并赋值给了 $func.<br>可以看到定义匿名函数依旧使用 function 关键字，只不过省略了函数名，直接是参数列表。</p>
+<p>然后我们又调用了 $func 所储存的匿名函数。</p>
+<p>匿名函数还可以用 use 关键字来捕捉外部变量：</p>
+<pre><code>function arrayPlus($array, $num)
+{
+    array_walk($array, function(&amp;amp;$v) use($num){
+        $v += $num;
+    });
+}
+</code></pre><p>上面的代码定义了一个 arrayPlus() 函数(这不是匿名函数), 它会将一个数组($array)中的每一项，加上一个指定的数字($num).</p>
+<p>在 arrayPlus() 的实现中，我们使用了 array_walk() 函数，它会为一个数组的每一项执行一个回调函数，即我们定义的匿名函数。<br>在匿名函数的参数列表后，我们用 use 关键字将匿名函数外的 $num 捕捉到了函数内，以便知道到底应该加上多少。</p>
+<h3 id="魔术方法：invoke-callStatic"><a href="#魔术方法：invoke-callStatic" class="headerlink" title="魔术方法：invoke(), callStatic()"></a>魔术方法：<strong>invoke(), </strong>callStatic()</h3><p>PHP 的面向对象体系中，提供了若干“魔术方法”，用于实现类似其他语言中的“重载”，如在访问不存在的属性、方法时触发某个魔术方法。</p>
+<p>随着匿名函数的加入，PHP 引入了一个新的魔术方法 __invoke().<br>该魔术方法会在将一个对象作为函数调用时被调用：</p>
+<pre><code>class A
+{
+    public function __invoke($str)
+    {
+        print &quot;A::__invoke(): {$str}&quot;;
+    }
+}
+
+$a = new A;
+$a(&quot;Hello World&quot;);
+输出毫无疑问是：
+
+A::__invoke(): Hello World
+__callStatic() 则会在调用一个不存在的静态方法时被调用。
+</code></pre><h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><pre><code>&lt;?php
+// 命名空间的分隔符是反斜杠，该声明语句必须在文件第一行。
+// 命名空间中可以包含任意代码，但只有 **类, 函数, 常量** 受命名空间影响。
+namespace XXOO\Test;
+
+// 该类的完整限定名是 \XXOO\Test\A , 其中第一个反斜杠表示全局命名空间。
+class A{}
+
+// 你还可以在已经文件中定义第二个命名空间，接下来的代码将都位于 \Other\Test2 .
+namespace Other\Test2;
+
+// 实例化来自其他命名空间的对象：
+$a = new \XXOO\Test\A;
+class B{}
+
+// 你还可以用花括号定义第三个命名空间
+namespace Other {
+    // 实例化来自子命名空间的对象：
+    $b = new Test2\B;
+
+    // 导入来自其他命名空间的名称，并重命名，
+    // 注意只能导入类，不能用于函数和常量。
+    use \XXOO\Test\A as ClassA
+}
+</code></pre><p>命名空间时常和 autoload 一同使用，用于自动加载类实现文件：</p>
+<pre><code>spl_autoload_register(
+    function ($class) {
+        spl_autoload(str_replace(&quot;\\&quot;, &quot;/&quot;, $class));
+    }
+);
+</code></pre><p>当你实例化一个类 \XXOO\Test\A 的时候，这个类的完整限定名会被传递给 autoload 函数，autoload 函数将类名中的命名空间分隔符(反斜杠)替换为斜杠，并包含对应文件。<br>这样可以实现类定义文件分级储存，按需自动加载。</p>
+<h3 id="后期静态绑定"><a href="#后期静态绑定" class="headerlink" title="后期静态绑定"></a>后期静态绑定</h3><p>PHP 的 OPP 机制，具有继承和类似虚函数的功能，例如如下的代码：</p>
+<pre><code>class A
+{
+    public function callFuncXXOO()
+    {
+        print $this-&gt;funcXXOO();
+    }
+
+    public function funcXXOO()
+    {
+        return &quot;A::funcXXOO()&quot;;
+    }
+}
+
+class B extends A
+{
+    public function funcXXOO()
+    {
+        return &quot;B::funcXXOO&quot;;
+    }
+}
+
+$b = new B;
+$b-&gt;callFuncXXOO();
+输出是：
+B::funcXXOO
+</code></pre><p>可以看到，当在 A 中使用 $this-&gt;funcXXOO() 时，体现了“虚函数”的机制，实际调用的是 B::funcXXOO().<br>然而如果将所有函数都改为静态函数：</p>
+<pre><code>class A
+{
+    static public function callFuncXXOO()
+    {
+        print self::funcXXOO();
+    }
+
+    static public function funcXXOO()
+    {
+        return &quot;A::funcXXOO()&quot;;
+    }
+}
+
+class B extends A
+{
+    static public function funcXXOO()
+    {
+        return &quot;B::funcXXOO&quot;;
+    }
+}
+
+$b = new B;
+$b-&gt;callFuncXXOO();
+情况就没这么乐观了，输出是：
+
+A::funcXXOO()
+</code></pre><p>这是因为 self 的语义本来就是“当前类”，所以 PHP5.3 给 static 关键字赋予了一个新功能：后期静态绑定：</p>
+<pre><code>class A
+{
+    static public function callFuncXXOO()
+    {
+        print static::funcXXOO();
+    }
+
+    // ...
+}
+
+// ...
+这样就会像预期一样输出了：
+
+B::funcXXOO
+</code></pre><h3 id="Heredoc-和-Nowdoc"><a href="#Heredoc-和-Nowdoc" class="headerlink" title="Heredoc 和 Nowdoc"></a>Heredoc 和 Nowdoc</h3><p>PHP5.3 对 Heredoc 以及 Nowdoc 进行了一些改进，它们都用于在 PHP 代码中嵌入大段字符串。</p>
+<p>Heredoc 的行为类似于一个双引号字符串：</p>
+<p>$name = “MyName”;<br>echo &lt;&lt;&lt; TEXT<br>My name is “{$name}”.<br>TEXT;<br>Heredoc 以三个左尖括号开始，后面跟一个标识符(TEXT), 直到一个同样的顶格的标识符(不能缩进)结束。<br>就像双引号字符串一样，其中可以嵌入变量。</p>
+<p>Heredoc 还可以用于函数参数，以及类成员初始化：</p>
+<pre><code>var_dump(&lt;&lt;&lt;EOD
+Hello World
+EOD
+);
+
+class A
+{
+    const xx = &lt;&lt;&lt; EOD
+Hello World
+EOD;
+
+    public $oo = &lt;&lt;&lt; EOD
+Hello World
+EOD;
+}
+</code></pre><p>Nowdoc 的行为像一个单引号字符串，不能在其中嵌入变量，和 Heredoc 唯一的区别就是，三个左尖括号后的标识符要以单引号括起来：</p>
+<pre><code>$name = &quot;MyName&quot;;
+echo &lt;&lt;&lt; &apos;TEXT&apos;
+My name is &quot;{$name}&quot;.
+TEXT;
+输出：
+
+My name is &quot;{$name}&quot;.
+</code></pre><h3 id="用-const-定义常量"><a href="#用-const-定义常量" class="headerlink" title="用 const 定义常量"></a>用 const 定义常量</h3><p>PHP5.3 起同时支持在全局命名空间和类中使用 const 定义常量。</p>
+<pre><code>旧式风格：
+
+define(&quot;XOOO&quot;, &quot;Value&quot;);
+新式风格：
+
+const XXOO = &quot;Value&quot;;
+const 形式仅适用于常量，不适用于运行时才能求值的表达式：
+
+// 正确
+const XXOO = 1234;
+// 错误
+const XXOO = 2 * 617;
+三元运算符简写形式
+旧式风格：
+
+echo $a ? $a : &quot;No Value&quot;;
+可简写成：
+
+echo $a ?: &quot;No Value&quot;;
+即如果省略三元运算符的第二个部分，会默认用第一个部分代替。
+</code></pre><h3 id="Phar"><a href="#Phar" class="headerlink" title="Phar"></a>Phar</h3><p>Phar即PHP Archive, 起初只是Pear中的一个库而已，后来在PHP5.3被重新编写成C扩展并内置到 PHP 中。<br>Phar用来将多个 .php 脚本打包(也可以打包其他文件)成一个 .phar 的压缩文件(通常是ZIP格式)。<br>目的在于模仿 Java 的 .jar, 不对，目的是为了让发布PHP应用程序更加方便。同时还提供了数字签名验证等功能。</p>
+<p>.phar 文件可以像 .php 文件一样，被PHP引擎解释执行，同时你还可以写出这样的代码来包含(require) .phar 中的代码：</p>
+<pre><code>require(&quot;xxoo.phar&quot;);
+require(&quot;phar://xxoo.phar/xo/ox.php&quot;);
+</code></pre><p>注：<a href="http://www.php.net/manual/zh/phar.using.intro.php" target="_blank" rel="external">http://www.php.net/manual/zh/phar.using.intro.php</a></p>
+<h2 id="PHP5-4"><a href="#PHP5-4" class="headerlink" title="PHP5.4"></a>PHP5.4</h2><p>(2012-2013)</p>
+<h3 id="Short-Open-Tag"><a href="#Short-Open-Tag" class="headerlink" title="Short Open Tag"></a>Short Open Tag</h3><p>Short Open Tag 自 PHP5.4 起总是可用。<br>在这里集中讲一下有关 PHP 起止标签的问题。即：</p>
+<pre><code>&lt;?php
+// Code...
+?&gt;
+通常就是上面的形式，除此之外还有一种简写形式：
+
+&lt;? /* Code... */ ?&gt;
+还可以把
+
+&lt;?php echo $xxoo;?&gt;
+简写成：
+
+&lt;?= $xxoo;?&gt;
+</code></pre><p>这种简写形式被称为 Short Open Tag, 在 PHP5.3 起被默认开启，在 PHP5.4 起总是可用。<br>使用这种简写形式在 HTML 中嵌入 PHP 变量将会非常方便。</p>
+<p>对于纯 PHP 文件(如类实现文件), PHP 官方建议顶格写起始标记，同时 省略 结束标记。<br>这样可以确保整个 PHP 文件都是 PHP 代码，没有任何输出，否则当你包含该文件后，设置 Header 和 Cookie 时会遇到一些麻烦 [注].</p>
+<p>注：Header 和 Cookie 必须在输出任何内容之前被发送。</p>
+<p>数组简写形式<br>这是非常方便的一项特征！</p>
+<pre><code>// 原来的数组写法
+$arr = array(&quot;key&quot; =&gt; &quot;value&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;);
+// 简写形式
+$arr = [&quot;key&quot; =&gt; &quot;value&quot;, &quot;key2&quot; =&gt; &quot;value2&quot;];
+</code></pre><p>Traits<br>所谓Traits就是“构件”，是用来替代继承的一种机制。PHP中无法进行多重继承，但一个类可以包含多个Traits.</p>
+<pre><code>// Traits不能被单独实例化，只能被类所包含
+trait SayWorld
+{
+    public function sayHello()
+    {
+        echo &apos;World!&apos;;
+    }
+}
+
+class MyHelloWorld
+{
+    // 将SayWorld中的成员包含进来
+    use SayWorld;
+}
+
+$xxoo = new MyHelloWorld();
+// sayHello() 函数是来自 SayWorld 构件的
+$xxoo-&gt;sayHello();
+</code></pre><p>Traits还有很多神奇的功能，比如包含多个Traits, 解决冲突，修改访问权限，为函数设置别名等等。<br>Traits中也同样可以包含Traits. 篇幅有限不能逐个举例，详情参见官网 [注].</p>
+<p>注：<a href="http://www.php.net/manual/zh/language.oop5.traits.php" target="_blank" rel="external">http://www.php.net/manual/zh/language.oop5.traits.php</a></p>
+<h3 id="内置-Web-服务器"><a href="#内置-Web-服务器" class="headerlink" title="内置 Web 服务器"></a>内置 Web 服务器</h3><p>PHP从5.4开始内置一个轻量级的Web服务器，不支持并发，定位是用于开发和调试环境。</p>
+<p>在开发环境使用它的确非常方便。</p>
+<p>php -S localhost:8000<br>这样就在当前目录建立起了一个Web服务器，你可以通过 <a href="http://localhost:8000/" target="_blank" rel="external">http://localhost:8000/</a> 来访问。<br>其中localhost是监听的ip，8000是监听的端口，可以自行修改。</p>
+<p>很多应用中，都会进行URL重写，所以PHP提供了一个设置路由脚本的功能:</p>
+<p>php -S localhost:8000 index.php<br>这样一来，所有的请求都会由index.php来处理。</p>
+<p>你还可以使用 XDebug 来进行断点调试。</p>
+<h3 id="细节修改"><a href="#细节修改" class="headerlink" title="细节修改"></a>细节修改</h3><p>PHP5.4 新增了动态访问静态方法的方式：</p>
+<pre><code>$func = &quot;funcXXOO&quot;;
+A::{$func}();
+新增在实例化时访问类成员的特征：
+
+(new MyClass)-&gt;xxoo();
+新增支持对函数返回数组的成员访问解析(这种写法在之前版本是会报错的)：
+
+print func()[0];
+</code></pre><h2 id="PHP5-5"><a href="#PHP5-5" class="headerlink" title="PHP5.5"></a>PHP5.5</h2><p>(2013起)</p>
+<h3 id="yield"><a href="#yield" class="headerlink" title="yield"></a>yield</h3><p>yield关键字用于当函数需要返回一个迭代器的时候, 逐个返回值。</p>
+<pre><code>function number10()
+{
+    for($i = 1; $i &lt;= 10; $i += 1)
+        yield $i;
+}
+</code></pre><p>该函数的返回值是一个数组：</p>
+<p>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]<br>list() 用于 foreach<br>可以用 list() 在 foreach 中解析嵌套的数组：</p>
+<pre><code>$array = [
+    [1, 2, 3],
+    [4, 5, 6],
+];
+
+foreach ($array as list($a, $b, $c))
+    echo &quot;{$a} {$b} {$c}\n&quot;;
+</code></pre><h3 id="细节修改-1"><a href="#细节修改-1" class="headerlink" title="细节修改"></a>细节修改</h3><p>不推荐使用 mysql 函数，推荐使用 PDO 或 MySQLi, 参见前文。<br>不再支持Windows XP.</p>
+<p>可用 MyClass::class 取到一个类的完整限定名(包括命名空间)。</p>
+<p>empty() 支持表达式作为参数。</p>
+<p>try-catch 结构新增 finally 块。</p>
+<h2 id="PHP5-6"><a href="#PHP5-6" class="headerlink" title="PHP5.6"></a>PHP5.6</h2><p>###　更好的常量<br>定义常量时允许使用之前定义的常量进行计算：</p>
+<pre><code>const A = 2;
+const B = A + 1;
+
+class C
+{
+    const STR = &quot;hello&quot;;
+    const STR2 = self::STR + &quot;, world&quot;;
+}
+</code></pre><h3 id="允许常量作为函数参数默认值："><a href="#允许常量作为函数参数默认值：" class="headerlink" title="允许常量作为函数参数默认值："></a>允许常量作为函数参数默认值：</h3><p>function func($arg = C::STR2)<br>更好的可变函数参数<br>用于代替 func_get_args()</p>
+<pre><code>function add(...$args)
+{
+    $result = 0;
+    foreach($args as $arg)
+        $result += $arg;
+    return $result;
+}
+</code></pre><p>同时可以在调用函数时，把数组展开为函数参数：</p>
+<pre><code>$arr = [2, 3];
+add(1, ...$arr);
+// 结果为 6
+</code></pre><h3 id="命名空间-1"><a href="#命名空间-1" class="headerlink" title="命名空间"></a>命名空间</h3><p>命名空间支持常量和函数：</p>
+<pre><code>namespace Name\Space {
+    const FOO = 42;
+    function f() { echo __FUNCTION__.&quot;\n&quot;; }
+}
+
+namespace {
+    use const Name\Space\FOO;
+    use function Name\Space\f;
+
+    echo FOO.&quot;\n&quot;;
+    f();
+}
+</code></pre>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/php/" rel="tag"># php</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/05/18/php反射/" rel="next" title="php反射">
+                <i class="fa fa-chevron-left"></i> php反射
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/7080674.jpg"
+               alt="freehere" />
+          <p class="site-author-name" itemprop="name">freehere</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+           
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/freehere107" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/u/2451481927" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP5-2以前"><span class="nav-number">1.</span> <span class="nav-text">PHP5.2以前</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#autoload"><span class="nav-number">1.1.</span> <span class="nav-text">autoload</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PDO-和-MySQLi"><span class="nav-number">1.2.</span> <span class="nav-text">PDO 和 MySQLi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#面向对象风格的接口"><span class="nav-number">1.3.</span> <span class="nav-text">面向对象风格的接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型约束"><span class="nav-number">1.4.</span> <span class="nav-text">类型约束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP5-2"><span class="nav-number">2.</span> <span class="nav-text">PHP5.2</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON-支持"><span class="nav-number">2.1.</span> <span class="nav-text">JSON 支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP5-3"><span class="nav-number">3.</span> <span class="nav-text">PHP5.3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#弃用的功能"><span class="nav-number">3.1.</span> <span class="nav-text">弃用的功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Register-Globals"><span class="nav-number">3.1.1.</span> <span class="nav-text">Register Globals</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Magic-Quotes"><span class="nav-number">3.1.2.</span> <span class="nav-text">Magic Quotes</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Safe-Mode"><span class="nav-number">3.1.3.</span> <span class="nav-text">Safe Mode</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匿名函数"><span class="nav-number">3.2.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#魔术方法：invoke-callStatic"><span class="nav-number">3.3.</span> <span class="nav-text">魔术方法：invoke(), callStatic()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名空间"><span class="nav-number">3.4.</span> <span class="nav-text">命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后期静态绑定"><span class="nav-number">3.5.</span> <span class="nav-text">后期静态绑定</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Heredoc-和-Nowdoc"><span class="nav-number">3.6.</span> <span class="nav-text">Heredoc 和 Nowdoc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-const-定义常量"><span class="nav-number">3.7.</span> <span class="nav-text">用 const 定义常量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Phar"><span class="nav-number">3.8.</span> <span class="nav-text">Phar</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP5-4"><span class="nav-number">4.</span> <span class="nav-text">PHP5.4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Short-Open-Tag"><span class="nav-number">4.1.</span> <span class="nav-text">Short Open Tag</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置-Web-服务器"><span class="nav-number">4.2.</span> <span class="nav-text">内置 Web 服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节修改"><span class="nav-number">4.3.</span> <span class="nav-text">细节修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP5-5"><span class="nav-number">5.</span> <span class="nav-text">PHP5.5</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#yield"><span class="nav-number">5.1.</span> <span class="nav-text">yield</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细节修改-1"><span class="nav-number">5.2.</span> <span class="nav-text">细节修改</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PHP5-6"><span class="nav-number">6.</span> <span class="nav-text">PHP5.6</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#允许常量作为函数参数默认值："><span class="nav-number">6.1.</span> <span class="nav-text">允许常量作为函数参数默认值：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名空间-1"><span class="nav-number">6.2.</span> <span class="nav-text">命名空间</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">freehere</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+        
+
+<div class="busuanzi-count">
+
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv"><i class="fa fa-user"></i><span class="busuanzi-value" id="busuanzi_value_site_uv"></span></span>
+  
+
+  
+    <span class="site-pv"><i class="fa fa-eye"></i><span class="busuanzi-value" id="busuanzi_value_site_pv"></span></span>
+  
+  
+</div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
